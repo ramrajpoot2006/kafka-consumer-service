@@ -1,0 +1,39 @@
+1. Prerequisites
+Java 17+ (Spring Boot 3.x requires Java 17 or later)
+Apache Kafka (Running locally or via Docker)
+Spring Boot 3.4.3 with spring-kafka
+
+2. Steps
+Download and setup kafka from link: https://www.apache.org/dyn/closer.cgi?path=/kafka/3.9.0/kafka_2.13-3.9.0.tgz
+
+Run Zookeeper: .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+Run Kafka: .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+Create Topic: .\bin\windows\kafka-topics.bat --create --topic test-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+Topic list: .\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+Check Kafka Consumer Group Offsets (Message Lag)
+.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --group test-group-id --describe
+
+Verify Produce messages inside kafka topic
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning
+
+########################################
+Swagger: Open API
+Example reference: https://www.baeldung.com/spring-rest-openapi-documentation
+
+Compatibility matrix of springdoc-openapi with spring-boot
+https://springdoc.org/#what-is-the-compatibility-matrix-of-springdoc-openapi-with-spring-boot
+
+Spring Boot Versions            Springdoc OpenAPI Versions
+
+API doc: http://localhost:8080/api-docs
+Open swagger: http://localhost:8080/swagger-ui/index.html  OR
+Open custom swagger path: http://localhost:8080/swagger-ui-custom.html,    config in application.yml file is springdoc.swagger-ui.path=/swagger-ui-custom.html
+Download yml file: http://localhost:8080/api-docs.yaml
+
+
+
+
+
