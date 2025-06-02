@@ -33,6 +33,23 @@ Open swagger: http://localhost:8080/swagger-ui/index.html  OR
 Open custom swagger path: http://localhost:8080/swagger-ui-custom.html,    config in application.yml file is springdoc.swagger-ui.path=/swagger-ui-custom.html
 Download yml file: http://localhost:8080/api-docs.yaml
 
+#############
+Testcase for Kafka consumer
+
+@DynamicPropertySource
+Annotation is used in Spring Boot tests to programmatically add properties to the Spring Environment during test runtime. This is particularly useful when working with dynamic resources such as embedded Kafka brokers or databases, where connection details like ports are assigned at runtime.
+@DynamicPropertySource runs before the ApplicationContext is loaded.
+
+Useful for:
+1.Embedded Kafka
+2.Testcontainers
+3.Dynamic database ports
+
+Any dynamic runtime values that are needed in Spring configuration
+
+@EmbeddedKafka
+When writing integration tests with Embedded Kafka (e.g., using @EmbeddedKafka), the Kafka broker is started on a random port. To make Spring aware of the correct broker address, you can use @DynamicPropertySource to dynamically register the Kafka bootstrap server URL.
+
 
 
 
