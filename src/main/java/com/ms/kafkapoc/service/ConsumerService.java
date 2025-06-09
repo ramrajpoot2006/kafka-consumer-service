@@ -3,6 +3,7 @@ package com.ms.kafkapoc.service;
 
 import com.ms.kafkapoc.config.LatchManager;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
@@ -14,13 +15,16 @@ import java.util.concurrent.CountDownLatch;
 @Slf4j
 public class ConsumerService {
 
-  private final LatchManager latchManager;
+  @Autowired
+  LatchManager latchManager;
+
+/*  private final LatchManager latchManager;
 
 
   public ConsumerService (LatchManager latchManager) {
 
     this.latchManager = latchManager;
-  }
+  }*/
 
 
   //@KafkaListener(topics = "test-topic", groupId = "test-group-id")
